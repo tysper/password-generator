@@ -1,13 +1,13 @@
 import random
 import string
-import hashlib
 
 abc = [le for le in string.ascii_letters]
 num = [num for num in string.digits]
-sym = ['@', '*', '#', '!', '%', '.', ',']
+sym = ['@', '*', '#', '!', '%']
 
+account = input('What account you want to store?: \n')
 
-desired_len = input("What is the size of the password you want to generate? Enter a number (1-65):\n")
+desired_len = input("Pick a size for the password: (1-65)\n")
 
 try:
     desired_len = int(desired_len)
@@ -36,7 +36,7 @@ while len(as_set) < desired_len:
 password = ''.join(as_set)
 
 with open('passwords.txt', 'a') as file:
-    file.write(f"{as_set}\n")
+    file.write(f"{account.upper()}:{password}\n")
 
 
-print(f"Your password: {password}\n")
+print(f"{account.upper()}: {password}\n")
